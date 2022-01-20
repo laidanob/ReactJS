@@ -10,7 +10,7 @@ function App() {
       <NavBar />
       <ItemListContainer bienvenida="Hola Bievenido" />
       <a href="https://github.com/laidanob/ReactJS">LINK A REPOSITORIO</a>
-      <ItemCount/>
+      <ItemCount stock={10} />
     </div>
   );
 }

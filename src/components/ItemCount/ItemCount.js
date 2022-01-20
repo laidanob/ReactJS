@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Boton from "react-bootstrap/Button";
+import { Notificacion } from "../Notificacion/Notificacion";
 import "./estilo.scss";
 
-export const ItemCount = () => {
+export const ItemCount = ({stock}) => {
   let [cuentaClicks, setCuentaClicks] = useState(0);
   let [botonRestarDeshabilitado, setbotonRestarDeshabilitado] = useState(false);
   let [botonSumarDeshabilitado, setbotonSumarDeshabilitado] = useState(false);
-
-  let stock = 10;
-
+  let [mostrarNoti, setMostrarNoti] = useState(false);
   useEffect(() => {
     cuentaClicks <= 0
       ? setbotonRestarDeshabilitado(true)
@@ -17,8 +16,12 @@ export const ItemCount = () => {
     cuentaClicks === stock
       ? setbotonSumarDeshabilitado(true)
       : setbotonSumarDeshabilitado(false);
+    setMostrarNoti(false)
   }, [cuentaClicks]);
+  const handleMostrarNoti = () => {
+      setMostrarNoti(true)
 
+  }
   const sumarClicks = () => {
     setCuentaClicks(cuentaClicks + 1);
   };
@@ -30,30 +33,28 @@ export const ItemCount = () => {
   return (
     <>
       <Container>
-        <Row className="justify-content-md-center align-items-center">
-          <Col md="auto">
-            <Boton
-              disabled={botonRestarDeshabilitado}
-              variant={botonRestarDeshabilitado ? "secondary" : "primary"}
-              onClick={restarClicks}
-            >
-              -
-            </Boton>
+        <Row className="justify-content-center">
+          <Col className="p-0" md="1">
+            <Boton   disabled={botonRestarDeshabilitado} variant={botonRestarDeshabilitado ? "secondary" : "primary"} onClick={restarClicks}>-</Boton>
           </Col>
-          <Col md="1" className=" align-items-center">
-            {" "}
-            <p>{cuentaClicks}</p>{" "}
+          
+          <Col className="p-0" md="1">
+            <p>{cuentaClicks}</p>
           </Col>
-          <Col md="auto">
-            <Boton
-              disabled={botonSumarDeshabilitado}
-              variant={botonSumarDeshabilitado ? "secondary" : "primary"}
-              onClick={sumarClicks}
-            >
-              +
-            </Boton>
+
+          <Col className="p-0" md="1">
+            <Boton disabled={botonSumarDeshabilitado} variant={botonSumarDeshabilitado ? "secondary" : "primary"} onClick={sumarClicks}>+</Boton>
           </Col>
         </Row>
+          <div></div>
+        <Row  className="justify-content-md-center">
+          <Col className="p-0 size" md="4">
+          <Boton disabled={botonRestarDeshabilitado || botonSumarDeshabilitado} variant={(botonRestarDeshabilitado || botonSumarDeshabilitado)   ? "secondary" : "primary"} 
+          onClick={handleMostrarNoti}>Agregar productos</Boton>
+          </Col>
+        </Row>
+
+        {mostrarNoti && <Notificacion valor={true} titulo="Carrito" mensaje={`Agregaste ${cuentaClicks} productos`} />}
       </Container>
     </>
   );
