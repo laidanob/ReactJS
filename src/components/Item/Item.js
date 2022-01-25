@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
+import { ItemCount } from '../ItemCount/ItemCount'
 
 export const Item = ({item}) => {
     return (
@@ -13,6 +14,7 @@ export const Item = ({item}) => {
                         </Card.Text>
                     </Card.Body>
                     </Card>
+           <ItemCount stock={10} initial={1} />
         </div>
     )
 }
