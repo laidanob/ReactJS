@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import { ItemCount } from '../ItemCount/ItemCount'
 
 export const Item = ({item}) => {
+    
     return (
         <div>
             <Card key={item.id} style={{ width: '18rem' }}>

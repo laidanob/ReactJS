@@ -4,11 +4,11 @@ import Boton from "react-bootstrap/Button";
 import { Notificacion } from "../Notificacion/Notificacion";
 import "./estilo.scss";
 
-export const ItemCount = ({stock, initial}) => {
+export const ItemCount = ({stock, initial, onAdd,mostrarNoti}) => {
   let [cuentaClicks, setCuentaClicks] = useState(initial);
   let [botonRestarDeshabilitado, setbotonRestarDeshabilitado] = useState(false);
   let [botonSumarDeshabilitado, setbotonSumarDeshabilitado] = useState(false);
-  let [mostrarNoti, setMostrarNoti] = useState(false);
+  
   
   useEffect(() => {
     cuentaClicks <= 1
@@ -20,10 +20,7 @@ export const ItemCount = ({stock, initial}) => {
     setMostrarNoti(false)
   }, [cuentaClicks]);
   
-  const onAdd = () => {
-      setMostrarNoti(true)
-
-  }
+  
   
   const sumarClicks = () => {
     setCuentaClicks(cuentaClicks + 1);
