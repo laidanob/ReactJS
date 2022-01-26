@@ -4,10 +4,11 @@ import Boton from "react-bootstrap/Button";
 import { Notificacion } from "../Notificacion/Notificacion";
 import "./estilo.scss";
 
-export const ItemCount = ({stock, initial, onAdd,mostrarNoti}) => {
+export const ItemCount = ({stock, initial, onAdd}) => {
   let [cuentaClicks, setCuentaClicks] = useState(initial);
   let [botonRestarDeshabilitado, setbotonRestarDeshabilitado] = useState(false);
   let [botonSumarDeshabilitado, setbotonSumarDeshabilitado] = useState(false);
+  let [mostrarNoti, setMostrarNoti] = useState(false);
   
   
   useEffect(() => {

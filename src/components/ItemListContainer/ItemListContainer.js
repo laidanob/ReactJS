@@ -13,6 +13,7 @@ export const ItemListContainer = ({bienvenida}) => {
         traerProductos()
         .then((respuesta) => {
             setProductos(respuesta)
+            
         })
         .catch((error) => {
             alert(error)
@@ -20,7 +21,7 @@ export const ItemListContainer = ({bienvenida}) => {
         .finally(() => {
             console.log("carga terminada")
         })
-    
+     
     
     },[])
     
