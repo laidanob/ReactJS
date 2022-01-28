@@ -4,6 +4,7 @@ import { traerProductos } from "../helpers/traerproductos"
 import { ItemList } from "../ItemList/ItemList"
 import React, {useEffect,useState} from "react"
 import { useParams } from "react-router"
+import { NavProductos } from "../NavProductos/NavProductos"
 
 export const ItemListContainer = ({bienvenida}) => {
     const [productos, setProductos] = useState([])
@@ -16,7 +17,8 @@ export const ItemListContainer = ({bienvenida}) => {
             .then((respuesta) => {
                 if (!id){
                 setProductos(respuesta)
-                }else setProductos(respuesta.filter(item => item.categoria === id))
+                }
+                else {setProductos(respuesta.filter(item => item.categoria === id))}
             })
             .catch((error) => {
                 alert(error)
@@ -26,10 +28,11 @@ export const ItemListContainer = ({bienvenida}) => {
             })
      
     
-    },[])
+    },[id])
     
     return (
         <div id="productos">
+            <NavProductos/>
             <h1>{bienvenida}</h1>
             <ItemList productos={productos}/>
             

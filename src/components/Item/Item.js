@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
-import { ItemCount } from '../ItemCount/ItemCount'
+import { Link } from 'react-router-dom';
 
 export const Item = ({item}) => {
     let estilo = {width: '18rem',
@@ -18,9 +18,10 @@ export const Item = ({item}) => {
                         <Card.Text>
                         {`$ ${item.precio} `}
                         </Card.Text>
+
                     </Card.Body>
                     </Card>
-           <ItemCount stock={10} initial={1} />
+          <Link to={`/detail/${item.id} `} className="btn btn-primary">Ver mas</Link>
         </div>
     )
 }

@@ -25,7 +25,9 @@ export const ItemCount = ({stock, initial, onAdd}) => {
   }, [cuentaClicks,stock]);
   
   
-  
+  const handleMostrarNoti = () => {
+    setMostrarNoti(true)
+  }
   const sumarClicks = () => {
     setCuentaClicks(cuentaClicks + 1);
   };
@@ -51,7 +53,7 @@ export const ItemCount = ({stock, initial, onAdd}) => {
         </div>
           
         <div  className="">
-          <Boton onClick={onAdd}>Agregar productos</Boton>
+          <Boton onClick={handleMostrarNoti}>Agregar productos</Boton>
         </div>
 
         {mostrarNoti && <Notificacion valor={true} titulo="Carrito" mensaje={`Agregaste ${cuentaClicks} productos`} />}

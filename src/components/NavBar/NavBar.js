@@ -5,7 +5,7 @@ import logo from '../../logoWhite.png'
 
 export const NavBar = () => {
     return (
-      <nav class="navBruno" >
+      <nav className="navBruno" >
         <li><Link to="/" className="nav-link"><img id="logo" src={logo}/></Link></li>
       <li><Link to="/" className="nav-link">Rabbit</Link></li>
       <li><Link to="/productos" className="nav-link">productos</Link></li>

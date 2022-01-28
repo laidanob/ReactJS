@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import { useParams } from 'react-router';
 import { traerProductos } from '../helpers/traerproductos';
 import { Item } from '../Item/Item';
+import { ItemCount } from '../ItemCount/ItemCount';
 import { ItemDetail } from '../ItemDetail/ItemDetail';
 
 export const ItemDetailContainer = () => {
@@ -30,6 +31,6 @@ export const ItemDetailContainer = () => {
         <h1>ITEM DETAIL CONTAINER</h1>
         <hr/>
         <ItemDetail {...producto} />
-
+        <ItemCount stock={10} initial={1} /> 
     </div>;
 };
