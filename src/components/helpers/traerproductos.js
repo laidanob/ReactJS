@@ -1,4 +1,3 @@
-import { productos } from "../productos/productos"
 
 export const traerProductos = (optionalEnd) => {
     optionalEnd === undefined && (optionalEnd = "")

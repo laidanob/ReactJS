@@ -4,7 +4,7 @@ export const ItemDetail = ({descripcion,precio,img,id}) => {
   return <div key={id}>
 
       <p>{descripcion}</p>
-      <div>{img}</div>
+      <img src={img} alt={descripcion}></img>
       <p>{precio}</p>
 
   </div>;

@@ -1,20 +1,16 @@
 import React from 'react'
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 import { CartWidget } from '../CartWidget/CartWidget';
+import logo from '../../logoWhite.png'
+
 export const NavBar = () => {
     return (
-        <Navbar bg="light" variant="light">
-    <Container>
-    <Navbar.Brand href="#home">Rabbit Fotolibros</Navbar.Brand>
-    <Nav className="me-auto">
-      <Nav.Link href="#home">Inicio</Nav.Link>
-      <Nav.Link href="#features">Tienda</Nav.Link>
-      <Nav.Link href="#pricing">Contacto</Nav.Link>
-    </Nav>
-    <CartWidget/>
-    </Container>
-  </Navbar>
+      <nav class="navBruno" >
+        <li><Link to="/" className="nav-link"><img id="logo" src={logo}/></Link></li>
+      <li><Link to="/" className="nav-link">Rabbit</Link></li>
+      <li><Link to="/productos" className="nav-link">productos</Link></li>
+      <li><Link to="cart" className="nav-link"><CartWidget/></Link></li>
+    
+    </nav>
     )
 }

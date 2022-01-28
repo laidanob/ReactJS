@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import {Col } from "react-bootstrap";
 import Boton from "react-bootstrap/Button";
 import { Notificacion } from "../Notificacion/Notificacion";
-import "./estilo.scss";
 
 export const ItemCount = ({stock, initial, onAdd}) => {
   let [cuentaClicks, setCuentaClicks] = useState(initial);
@@ -10,8 +9,11 @@ export const ItemCount = ({stock, initial, onAdd}) => {
   let [botonSumarDeshabilitado, setbotonSumarDeshabilitado] = useState(false);
   let [mostrarNoti, setMostrarNoti] = useState(false);
   
-  
+ 
+
   useEffect(() => {
+    
+
     cuentaClicks <= 1
       ? setbotonRestarDeshabilitado(true)
       : setbotonRestarDeshabilitado(false);
@@ -19,7 +21,8 @@ export const ItemCount = ({stock, initial, onAdd}) => {
       ? setbotonSumarDeshabilitado(true)
       : setbotonSumarDeshabilitado(false);
     setMostrarNoti(false)
-  }, [cuentaClicks]);
+
+  }, [cuentaClicks,stock]);
   
   
   
@@ -32,31 +35,26 @@ export const ItemCount = ({stock, initial, onAdd}) => {
   };
 
   return (
-    <>
-      <Container>
-        <Row className="justify-content-center">
-          <Col className="p-0" md="1">
-            <Boton   disabled={botonRestarDeshabilitado} variant={botonRestarDeshabilitado ? "secondary" : "primary"} onClick={restarClicks}>-</Boton>
-          </Col>
+      <div className="count">
+        <div className="botonesMasMenos">
           
-          <Col className="p-0" md="1">
+            <Boton   disabled={botonRestarDeshabilitado} variant={botonRestarDeshabilitado ? "secondary" : "primary"} onClick={restarClicks}>-</Boton>
+         
+          
+          
             <p>{cuentaClicks}</p>
-          </Col>
+         
 
-          <Col className="p-0" md="1">
+          
             <Boton disabled={botonSumarDeshabilitado} variant={botonSumarDeshabilitado ? "secondary" : "primary"} onClick={sumarClicks}>+</Boton>
-          </Col>
-        </Row>
-          <div></div>
-        <Row  className="justify-content-md-center">
-          <Col className="p-0 size" md="4">
-          <Boton 
-          onClick={onAdd}>Agregar productos</Boton>
-          </Col>
-        </Row>
+          
+        </div>
+          
+        <div  className="">
+          <Boton onClick={onAdd}>Agregar productos</Boton>
+        </div>
 
         {mostrarNoti && <Notificacion valor={true} titulo="Carrito" mensaje={`Agregaste ${cuentaClicks} productos`} />}
-      </Container>
-    </>
+      </div>
   );
 };
