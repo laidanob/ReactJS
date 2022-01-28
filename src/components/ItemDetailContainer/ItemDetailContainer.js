@@ -7,15 +7,15 @@ import { ItemDetail } from '../ItemDetail/ItemDetail';
 export const ItemDetailContainer = () => {
   let [producto, setProducto] = useState(false)
    
-  const {parametroURL} = useParams()
-  console.log(parametroURL)
+  const {id} = useParams()
+  console.log(id)
   
   
   useEffect(() => {
 
         traerProductos()
             .then((respuesta) => {
-                setProducto( respuesta.find(producto => producto.id === parametroURL) )
+                setProducto( respuesta.find(producto => producto.id === id) )
                 })
                 
             .catch((error) => {
