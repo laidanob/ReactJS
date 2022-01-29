@@ -1,13 +1,13 @@
 import React, {useState,useEffect} from 'react';
 import { useParams } from 'react-router';
 import { traerProductos } from '../helpers/traerproductos';
-import { Item } from '../Item/Item';
 import { ItemCount } from '../ItemCount/ItemCount';
 import { ItemDetail } from '../ItemDetail/ItemDetail';
+import {Loader } from '../Loader/Loader'
 
 export const ItemDetailContainer = () => {
-  let [producto, setProducto] = useState(false)
-   
+  const [producto, setProducto] = useState(false)
+  const [loading, setLoading] = useState(true)
   const {id} = useParams()
   console.log(id)
   
@@ -23,14 +23,14 @@ export const ItemDetailContainer = () => {
                 alert(error)
             })
             .finally(() => {
-                console.log("carga terminada")
+                setLoading(false)
             })
-    },[])
+    },[id])
   
     return <div>
         <h1>ITEM DETAIL CONTAINER</h1>
         <hr/>
-        <ItemDetail {...producto} />
-        <ItemCount stock={10} initial={1} /> 
+        { loading ? <Loader/> : <> <ItemDetail {...producto}/> <ItemCount stock={10} initial={1} /> </>}
+       
     </div>;
 };

@@ -1,47 +1,48 @@
-import { Container } from "react-bootstrap"
-
 import { traerProductos } from "../helpers/traerproductos"
 import { ItemList } from "../ItemList/ItemList"
 import React, {useEffect,useState} from "react"
 import { useParams } from "react-router"
 import { NavProductos } from "../NavProductos/NavProductos"
+import { Loader } from "../Loader/Loader"
 
 export const ItemListContainer = ({bienvenida}) => {
     const [productos, setProductos] = useState([])
-    const {id } = useParams()
-    console.log(id)
+    const [loading, setLoading] = useState(true)
+    
+    const {catID } = useParams()
+
      
     useEffect(() => {
 
         traerProductos()
             .then((respuesta) => {
-                if (!id){
+                if (!catID){
                 setProductos(respuesta)
                 }
-                else {setProductos(respuesta.filter(item => item.categoria === id))}
+                else {setProductos(respuesta.filter(item => item.categoria === catID))}
             })
             .catch((error) => {
                 alert(error)
             })
             .finally(() => {
-                console.log("carga terminada")
+               setLoading(false)
             })
      
     
-    },[id])
+    },[catID])
     
     return (
         <div id="productos">
-            <NavProductos/>
-            <h1>{bienvenida}</h1>
-            <ItemList productos={productos}/>
+        <NavProductos/>
+        <h1>{bienvenida}</h1>
+        
+        { loading ? <Loader/> : <ItemList productos={productos}/> }
             
         </div>
-        )
+        )}
 
 
 
 
 
 
-}
