@@ -1,62 +1,54 @@
 import React, { useEffect, useState } from "react";
-import {Col } from "react-bootstrap";
 import Boton from "react-bootstrap/Button";
-import { Notificacion } from "../Notificacion/Notificacion";
 
-export const ItemCount = ({stock, initial, onAdd}) => {
-  let [cuentaClicks, setCuentaClicks] = useState(initial);
+export const ItemCount = ({stock, initial, cantidad, setCantidad, onAdd}) => {
+  
   let [botonRestarDeshabilitado, setbotonRestarDeshabilitado] = useState(false);
   let [botonSumarDeshabilitado, setbotonSumarDeshabilitado] = useState(false);
-  let [mostrarNoti, setMostrarNoti] = useState(false);
   
+
+
  
 
   useEffect(() => {
-    
-
-    cuentaClicks <= 1
+      cantidad  <= 1
       ? setbotonRestarDeshabilitado(true)
       : setbotonRestarDeshabilitado(false);
-    cuentaClicks === stock
+      cantidad  === stock
       ? setbotonSumarDeshabilitado(true)
-      : setbotonSumarDeshabilitado(false);
-    setMostrarNoti(false)
+      : setbotonSumarDeshabilitado(false)
 
-  }, [cuentaClicks,stock]);
+  }, [cantidad ,stock]);
   
   
-  const handleMostrarNoti = () => {
-    setMostrarNoti(true)
-  }
   const sumarClicks = () => {
-    setCuentaClicks(cuentaClicks + 1);
+    setCantidad(cantidad + 1);
   };
 
   const restarClicks = () => {
-    setCuentaClicks(cuentaClicks - 1);
+    setCantidad(cantidad - 1);
   };
+ 
 
   return (
       <div className="count">
         <div className="botonesMasMenos">
           
-            <Boton   disabled={botonRestarDeshabilitado} variant={botonRestarDeshabilitado ? "secondary" : "primary"} onClick={restarClicks}>-</Boton>
-         
+            {/* <Boton   disabled={botonRestarDeshabilitado} variant={botonRestarDeshabilitado ? "secondary" : "primary"} onClick={restarClicks}>-</Boton> */}
+            <Boton onClick={restarClicks}>-</Boton>
           
           
-            <p>{cuentaClicks}</p>
+            <p>{cantidad}</p>
          
 
-          
-            <Boton disabled={botonSumarDeshabilitado} variant={botonSumarDeshabilitado ? "secondary" : "primary"} onClick={sumarClicks}>+</Boton>
+            {/* <Boton disabled={botonSumarDeshabilitado} variant={botonSumarDeshabilitado ? "secondary" : "primary"} onClick={sumarClicks}>+</Boton> */}
+            <Boton onClick={sumarClicks}>+</Boton>
           
         </div>
           
         <div  className="">
-          <Boton onClick={handleMostrarNoti}>Agregar productos</Boton>
+          <Boton onClick={onAdd}>Agregar productos</Boton>
         </div>
-
-        {mostrarNoti && <Notificacion valor={true} titulo="Carrito" mensaje={`Agregaste ${cuentaClicks} productos`} />}
       </div>
   );
 };

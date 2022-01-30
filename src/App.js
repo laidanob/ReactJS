@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 import { BrowserRouter , Routes, Route,Navigate} from "react-router-dom"
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import "./estilo.scss";
+import { Contacto } from "./components/Contacto/Contacto";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/" element={ <ItemListContainer/>} />
       <Route path="/productos/:catID" element={ <ItemListContainer/>} />
       <Route path="/detail/:id" element={<ItemDetailContainer/>} />
+      <Route path="/contacto" element={<Contacto/>} />
       <Route path="*" element={<Navigate to="/"/>}/>
 
       </Routes>
