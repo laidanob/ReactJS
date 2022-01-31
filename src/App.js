@@ -6,6 +6,7 @@ import { BrowserRouter , Routes, Route,Navigate} from "react-router-dom"
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import "./estilo.scss";
 import { Contacto } from "./components/Contacto/Contacto";
+import { Cart } from "./components/Cart/Cart";
 
 function App() {
   return (
@@ -22,7 +23,6 @@ function App() {
       <Route path="/contacto" element={<Contacto/>} />
       <Route path="/cart" element={<Cart/>} />
       <Route path="*" element={<Navigate to="/"/>}/>
-
       </Routes>
       </BrowserRouter> 
     </div>
