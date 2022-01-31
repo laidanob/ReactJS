@@ -26,7 +26,7 @@ export const ItemDetail = ({descripcion,precio,img,id,stock,initial}) => {
 
     {!enCarrito ?<ItemCount stock={stock} initial={initial} cantidad={cuentaCantidad} setCantidad={setCantidad} onAdd={onAdd} />
         :
-        <Link className="btn btn-primary" to="Cart">Ver Carrito</Link>  
+        <Link className="btn btn-primary" to="/cart">Ver Carrito</Link>  
   
   }
 
