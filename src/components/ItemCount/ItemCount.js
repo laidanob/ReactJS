@@ -35,14 +35,14 @@ export const ItemCount = ({stock, initial, cantidad, setCantidad, onAdd}) => {
         <div className="botonesMasMenos">
           
             {/* <Boton   disabled={botonRestarDeshabilitado} variant={botonRestarDeshabilitado ? "secondary" : "primary"} onClick={restarClicks}>-</Boton> */}
-            <Boton onClick={restarClicks}>-</Boton>
+            <Boton disabled={botonRestarDeshabilitado} onClick={restarClicks}>-</Boton>
           
           
             <p>{cantidad}</p>
          
 
             {/* <Boton disabled={botonSumarDeshabilitado} variant={botonSumarDeshabilitado ? "secondary" : "primary"} onClick={sumarClicks}>+</Boton> */}
-            <Boton onClick={sumarClicks}>+</Boton>
+            <Boton disabled={botonSumarDeshabilitado} onClick={sumarClicks}>+</Boton>
           
         </div>
           

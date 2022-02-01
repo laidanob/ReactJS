@@ -1,9 +1,10 @@
 import { traerProductos } from "../helpers/traerproductos"
 import { ItemList } from "../ItemList/ItemList"
-import React, {useEffect,useState} from "react"
+import React, {useContext, useEffect,useState} from "react"
 import { useParams } from "react-router"
 import { NavProductos } from "../NavProductos/NavProductos"
 import { Loader } from "../Loader/Loader"
+import { Contexto } from "../context/CartContext"
 
 export const ItemListContainer = ({bienvenida}) => {
     const [productos, setProductos] = useState([])
@@ -12,6 +13,9 @@ export const ItemListContainer = ({bienvenida}) => {
     const {catID } = useParams()
 
      
+   
+    
+    
     useEffect(() => {
 
         traerProductos()

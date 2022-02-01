@@ -6,12 +6,39 @@ import { BrowserRouter , Routes, Route,Navigate} from "react-router-dom"
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import "./estilo.scss";
 import { Contacto } from "./components/Contacto/Contacto";
+import { CartContext } from "./components/context/CartContext";
 import { Cart } from "./components/Cart/Cart";
+import { useState } from "react";
 
 function App() {
+
+  const [carrito, setCarrito] = useState([])
+  const agregarAlCarrito = (item) => {
+    setCarrito([...carrito,item])
+    console.log("me estas agregando")
+
+  }
+  const removerDelCarrito = (id) => {
+    setCarrito(carrito.filter(item => item.id !== id))
+
+  }
+  const vaciarCarrito = () => {
+    setCarrito([])
+  }
+  // const estaEnCarrito = () => {
+  //   return carrito.some 
+  // }
   return (
 
     <div className="App">
+      <CartContext.Provider value={{
+        carrito,
+        setCarrito,
+        agregarAlCarrito,
+        removerDelCarrito,
+        vaciarCarrito
+      }}>
+      
       <BrowserRouter> 
 
       <NavBar />
@@ -25,6 +52,7 @@ function App() {
       <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
       </BrowserRouter> 
+      </CartContext.Provider>
     </div>
   );
 }

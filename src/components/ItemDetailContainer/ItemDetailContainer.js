@@ -28,7 +28,7 @@ export const ItemDetailContainer = () => {
     return <div>
         <h1>ITEM DETAIL CONTAINER</h1>
         <hr/>
-        { loading ? <Loader/> : <> <ItemDetail {...producto} stock={10} initial={1}/> </>}
+        { loading ? <Loader/> : <> <ItemDetail {...producto} /> </>}
        
        <form>
 
