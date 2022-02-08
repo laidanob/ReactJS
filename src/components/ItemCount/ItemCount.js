@@ -1,26 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Boton from "react-bootstrap/Button";
 
 export const ItemCount = ({stock, initial, cantidad, setCantidad, onAdd}) => {
-  
-  let [botonRestarDeshabilitado, setbotonRestarDeshabilitado] = useState(false);
-  let [botonSumarDeshabilitado, setbotonSumarDeshabilitado] = useState(false);
-  
 
-
- 
-
-  useEffect(() => {
-      cantidad  <= 1
-      ? setbotonRestarDeshabilitado(true)
-      : setbotonRestarDeshabilitado(false);
-      cantidad  === stock
-      ? setbotonSumarDeshabilitado(true)
-      : setbotonSumarDeshabilitado(false)
-
-  }, [cantidad ,stock]);
-  
-  
   const sumarClicks = () => {
     setCantidad(cantidad + 1);
   };
@@ -34,15 +16,11 @@ export const ItemCount = ({stock, initial, cantidad, setCantidad, onAdd}) => {
       <div className="count">
         <div className="botonesMasMenos">
           
-            {/* <Boton   disabled={botonRestarDeshabilitado} variant={botonRestarDeshabilitado ? "secondary" : "primary"} onClick={restarClicks}>-</Boton> */}
-            <Boton disabled={botonRestarDeshabilitado} onClick={restarClicks}>-</Boton>
-          
+            <Boton className="botonOperador" disabled={cantidad  <= 1} onClick={restarClicks}>-</Boton>
           
             <p>{cantidad}</p>
-         
 
-            {/* <Boton disabled={botonSumarDeshabilitado} variant={botonSumarDeshabilitado ? "secondary" : "primary"} onClick={sumarClicks}>+</Boton> */}
-            <Boton disabled={botonSumarDeshabilitado} onClick={sumarClicks}>+</Boton>
+            <Boton className="botonOperador" disabled={cantidad  === stock} onClick={sumarClicks}>+</Boton>
           
         </div>
           
