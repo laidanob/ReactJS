@@ -5,9 +5,8 @@ import { CartItem } from './CartItem';
 import { Link } from 'react-router-dom';
 
 export const Cart = () => {
-    const {vaciarCarrito, carrito,removerDelCarrito } = useContext(CartContext)
+    const {vaciarCarrito, carrito,totalCompra} = useContext(CartContext)
     
-    console.log(carrito)
 
   return <div id="contacto" >
       <h1>CARRITO</h1>
@@ -15,6 +14,9 @@ export const Cart = () => {
       {carrito.length > 0 ? 
           <>
         {carrito.map(prod => (<CartItem prod= {prod}/>))}
+        <hr></hr>
+        <p>El total de tu compra es: ${totalCompra()}</p>
+       
         <Boton onClick={vaciarCarrito}>Vaciar Carrito</Boton>
         </>
        :

@@ -10,7 +10,9 @@ export const CartItem = ({prod}) => {
   < div key={prod.id}>
   <h2>{prod.nombre}</h2>
   <p>{prod.cuentaCantidad} Unidades</p>
-  <p>${prod.precio}</p>
+  <p>Valor Unidad ${prod.precio}</p>
+  <p>Valor Total${prod.total}</p>
+
  
   <div>
       <button onClick={() => {removerDelCarrito(prod.id)}}>remover</button>

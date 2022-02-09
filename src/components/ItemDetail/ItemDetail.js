@@ -10,7 +10,8 @@ export const ItemDetail = ({nombre,desc,precio,img,id,stock,initial}) => {
   const [mostrarNoti, setMostrarNoti] = useState(false);
   const {agregarAlCarrito,estaEnCarrito,carrito } = useContext(CartContext)
 
-  
+  const total = precio * cuentaCantidad
+  console.log("eltotal ",total)
 
   
   useEffect(() => {
@@ -26,6 +27,7 @@ export const ItemDetail = ({nombre,desc,precio,img,id,stock,initial}) => {
       img,
       precio,
       cuentaCantidad,
+      total
 
     })
     console.log(carrito)
