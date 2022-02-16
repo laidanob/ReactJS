@@ -3,6 +3,9 @@ import { useParams } from 'react-router';
 import { traerProductos } from '../helpers/traerproductos';
 import { ItemDetail } from '../ItemDetail/ItemDetail';
 import {Loader } from '../Loader/Loader'
+import {doc, getDoc,collection} from "firebase/firestore"
+import { db } from "../firebase/config"
+
 
 export const ItemDetailContainer = () => {
   const [producto, setProducto] = useState(false)
@@ -11,12 +14,14 @@ export const ItemDetailContainer = () => {
   
   
   useEffect(() => {
-
-        traerProductos()
-            .then((respuesta) => {
-                setProducto( respuesta.find(producto => producto.id === id) )
-                })
-                
+        const referenciaFire = collection(db, "productos")
+       const itemFire = doc(referenciaFire,id)
+                console.log(itemFire)
+            getDoc(itemFire)
+            .then((respuesta)=>{
+                setProducto({id: respuesta.id, ...respuesta.data()})
+                console.log("producto", producto)
+            })
             .catch((error) => {
                 alert(error)
             })

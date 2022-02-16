@@ -7,12 +7,13 @@ import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetail
 import "./estilo.scss";
 import { Contacto } from "./components/Contacto/Contacto";
 import { Cart } from "./components/Cart/Cart";
+import { Checkout } from "./components/Checkout/Checkout";
 import { CartProvider } from "./components/context/CartContext";
 
 
 function App() {
 
-  
+
   return (
 
     <div className="App">
@@ -27,7 +28,9 @@ function App() {
       <Route path="/detail/:id" element={<ItemDetailContainer/>} />
       <Route path="/contacto" element={<Contacto/>} />
       <Route path="/cart" element={<Cart/>} />
+      <Route path="/checkout" element={<Checkout/>} />
       <Route path="*" element={<Navigate to="/"/>}/>
+
       </Routes>
       </BrowserRouter> 
       </CartProvider>

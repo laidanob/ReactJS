@@ -16,7 +16,7 @@ export const Cart = () => {
         {carrito.map(prod => (<CartItem prod= {prod}/>))}
         <hr></hr>
         <p>El total de tu compra es: ${totalCompra()}</p>
-       
+        <Link to="/checkout">Terminar mi compra</Link>
         <Boton onClick={vaciarCarrito}>Vaciar Carrito</Boton>
         </>
        :

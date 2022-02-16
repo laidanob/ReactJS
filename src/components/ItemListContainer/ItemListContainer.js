@@ -1,10 +1,11 @@
 import { traerProductos } from "../helpers/traerproductos"
 import { ItemList } from "../ItemList/ItemList"
-import React, {useContext, useEffect,useState} from "react"
+import React, { useEffect,useState} from "react"
 import { useParams } from "react-router"
 import { NavProductos } from "../NavProductos/NavProductos"
 import { Loader } from "../Loader/Loader"
-import { Contexto } from "../context/CartContext"
+import {collection, getDocs,query,where} from "firebase/firestore"
+import { db } from "../firebase/config"
 
 export const ItemListContainer = ({bienvenida}) => {
     const [productos, setProductos] = useState([])
@@ -17,14 +18,16 @@ export const ItemListContainer = ({bienvenida}) => {
     
     
     useEffect(() => {
-
-        traerProductos()
+        const productosFire = collection(db , "productos")
+        const q = catID ? query(productosFire,where("categoria", "==", catID )) : productosFire
+        getDocs(q)
             .then((respuesta) => {
-                if (!catID){
-                setProductos(respuesta)
-                }
-                else {setProductos(respuesta.filter(item => item.categoria === catID))}
-            })
+                
+                const items = respuesta.docs.map((item) => ({id: item.id, ...item.data()}))
+                console.log(items)
+                setProductos(items)
+                })
+            
             .catch((error) => {
                 alert(error)
             })
