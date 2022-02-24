@@ -9,6 +9,7 @@ import { Contacto } from "./components/Contacto/Contacto";
 import { Cart } from "./components/Cart/Cart";
 import { Checkout } from "./components/Checkout/Checkout";
 import { CartProvider } from "./components/context/CartContext";
+import {Profile} from "./components/Profile/Profile";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Route path="/contacto" element={<Contacto/>} />
       <Route path="/cart" element={<Cart/>} />
       <Route path="/checkout" element={<Checkout/>} />
+      <Route path="/profile" element={<Profile/>} />
       <Route path="*" element={<Navigate to="/"/>}/>
 
       </Routes>

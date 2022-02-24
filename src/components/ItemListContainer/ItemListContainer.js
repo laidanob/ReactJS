@@ -1,4 +1,3 @@
-import { traerProductos } from "../helpers/traerproductos"
 import { ItemList } from "../ItemList/ItemList"
 import React, { useEffect,useState} from "react"
 import { useParams } from "react-router"
