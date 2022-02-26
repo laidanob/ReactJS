@@ -1,5 +1,4 @@
 import {useState, useEffect, useContext} from 'react';
-import {Link,useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { ItemCount } from '../ItemCount/ItemCount';
 import { Notificacion } from "../Notificacion/Notificacion";
@@ -33,25 +32,27 @@ export const ItemDetail = ({nombre,desc,precio,img,id,stock,initial}) => {
     console.log(carrito)
   }
  
-  const navegar = useNavigate()
-  return <div key={id}>
-
+  
+  return <div className="container" key={id}>
+      <h1>{nombre}</h1>
       
-      <img src={img} alt={desc}></img>
+      <img id="imagenDetail" src={img} alt={desc}></img>
+
       <p>{desc}</p>
+
       <p>El stock es de {stock} unidades</p>
+
       <p> ${precio}</p>
 
-    {!estaEnCarrito(id) ?<ItemCount stock={stock} initial={initial} cantidad={cuentaCantidad} setCantidad={setCantidad} onAdd={onAdd} />
-        :
-        <Link className="btn btn-primary" to="/cart">Ver Carrito</Link>
-        
-  }
+   
+        <ItemCount stock={stock} initial={initial} cantidad={cuentaCantidad} setCantidad={setCantidad} onAdd={onAdd} estaCarrito={estaEnCarrito(id)} />
+       
+  
 
 
       
 
       {mostrarNoti && <Notificacion valor={true} titulo="Carrito" mensaje={`Agregaste ${cuentaCantidad} productos`} />}
-      <button onClick={() => (navegar("/"))}>Volver </button>
+     
   </div>;
 };

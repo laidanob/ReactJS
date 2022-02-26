@@ -24,15 +24,11 @@ export const FormNewProduct = () => {
     
    
     const handleEnviar = (values,{resetForm}) =>{
-        addDoc(productsRef,newProduct)
+        addDoc(productsRef,values)
                 .then((respuesta) => {console.log(respuesta)})
         console.log(values)
-        resetForm()
-         if (values != objetoNewProductVacio){
-            console.log("entro")
-         }
-         else{  
-        setNewProduct(objetoNewProductVacio)}
+        resetForm() 
+        setNewProduct(values)
        
     }
            

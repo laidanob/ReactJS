@@ -10,6 +10,7 @@ import { Cart } from "./components/Cart/Cart";
 import { Checkout } from "./components/Checkout/Checkout";
 import { CartProvider } from "./components/context/CartContext";
 import {Profile} from "./components/Profile/Profile";
+import {Autenticacion} from "./components/Autenticacion/Autenticacion";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       {/* uso ROUTES = switch, NAVIGATE=redirect, ELEMENT=component y no EXACT porque estoy sobre la version 6.2 */}
       <Routes> 
       <Route path="/" element={ <ItemListContainer/>} />
+      <Route path="/iniciar" element={ <Autenticacion/>} />
       <Route path="/productos/:catID" element={ <ItemListContainer/>} />
       <Route path="/detail/:id" element={<ItemDetailContainer/>} />
       <Route path="/contacto" element={<Contacto/>} />
