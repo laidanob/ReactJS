@@ -72,7 +72,7 @@ export const Profile = () => {
                 </TableContainer>
 
             
-
+                <Link to="/agregarproducto"><Button variant="contained" size="large">agregar Producto</Button></Link>
            <Button  onClick={handleCerrarSesion} variant="contained" size="large">Cerrar Sesion</Button>
           </>
            }
