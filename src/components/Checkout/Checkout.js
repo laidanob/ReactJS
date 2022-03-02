@@ -11,24 +11,19 @@ export const Checkout = () => {
     const {usuario} = useAuth()
     const [idTrans, setIdTrans] = useState()
     const ordenFire = collection(db,"ordenes")
-    const [orden, setOrden] = useState({}) 
 
     const handleEnviar = () => {
-        
-      setOrden({
-        usuario: {nombre: usuario.displayName,
-          Telefono: usuario.phoneNumber,
-          Email: usuario.email},
-          items: carrito,
-          total: totalCompra(),
-          fecha: Timestamp.fromDate(new Date()),
-        })
+        const orden = {
+            usuario: {nombre: usuario.displayName,
+            Telefono: usuario.phoneNumber,
+            Email: usuario.email},
+            items: carrito,
+            total: totalCompra(),
+            fecha: Timestamp.fromDate(new Date())
+        }
         
         addDoc(ordenFire,orden)
-                .then((respuesta) => {
-                  setOrden({id: respuesta.id,...orden})
-                  setIdTrans(respuesta.id)
-                  }) 
+                .then((respuesta) => {setIdTrans(respuesta.id)}) 
         vaciarCarrito()
     }
     
