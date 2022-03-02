@@ -17,7 +17,7 @@ export const Registro = () => {
         showPassword: false,
     }
 
-    const {registro,datosComplementarios,usuario} = useAuth()
+    const {registro,actualizarNombre,usuario} = useAuth()
     
     const navigate = useNavigate()
 
@@ -28,7 +28,7 @@ export const Registro = () => {
                 (res) => 
                 {
                 console.log(usuario, res)
-                datosComplementarios(res.user,valores.name)
+                actualizarNombre(res.user,valores.name)
                 setResultadoPeticion({mensaje: "Cuenta creada con Exito", tipo: "success"})
                 resetForm()
                 navigate("/")
