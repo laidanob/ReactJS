@@ -7,10 +7,9 @@ import { Notificacion } from "../Notificacion/Notificacion";
 export const ItemDetail = ({nombre,desc,precio,img,id,stock,initial}) => {
   const [cuentaCantidad, setCantidad] = useState(1);
   const [mostrarNoti, setMostrarNoti] = useState(false);
-  const {agregarAlCarrito,estaEnCarrito,carrito } = useContext(CartContext)
+  const {agregarAlCarrito,estaEnCarrito } = useContext(CartContext)
 
   const total = precio * cuentaCantidad
-  console.log("eltotal ",total)
 
   
   useEffect(() => {
@@ -29,7 +28,6 @@ export const ItemDetail = ({nombre,desc,precio,img,id,stock,initial}) => {
       total
 
     })
-    console.log(carrito)
   }
  
   

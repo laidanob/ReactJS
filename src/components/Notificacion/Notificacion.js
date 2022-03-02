@@ -5,7 +5,7 @@ import { Row, Col } from "react-bootstrap";
 
 export function Notificacion({valor, titulo,mensaje}) {
     const [show, setShow] = useState(false);
-    useEffect( () => {setShow(valor)} ,[])
+    useEffect( () => {setShow(valor)} ,[valor])
 
     return (
       <Row>

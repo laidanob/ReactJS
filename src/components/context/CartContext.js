@@ -7,7 +7,6 @@ export const CartProvider = ({children}) => {
     const [carrito, setCarrito] = useState([])
   const agregarAlCarrito = (item) => {
     setCarrito([...carrito,item])
-    console.log(carrito)
 
   }
   const removerDelCarrito = (id) => {
@@ -18,7 +17,7 @@ export const CartProvider = ({children}) => {
     setCarrito([])
   }
   const estaEnCarrito = (item) => {
-    return carrito.some((prod) => prod.id == item) 
+    return carrito.some((prod) => prod.id === item) 
   }
 
   const totalCant = () => { 

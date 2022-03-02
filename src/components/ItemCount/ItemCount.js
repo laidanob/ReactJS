@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Boton from "react-bootstrap/Button";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -15,7 +15,6 @@ export const ItemCount = ({stock, initial, cantidad, setCantidad, onAdd, estaCar
     setCantidad(cantidad - 1);
   };
  
-  console.log(estaCarrito)
   return (
       <div className="count">
         <div className="botonesMasMenos">

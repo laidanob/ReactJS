@@ -23,7 +23,6 @@ export const ItemListContainer = ({bienvenida}) => {
             .then((respuesta) => {
                 
                 const items = respuesta.docs.map((item) => ({id: item.id, ...item.data()}))
-                console.log(items)
                 setProductos(items)
                 })
             

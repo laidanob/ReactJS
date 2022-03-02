@@ -15,11 +15,9 @@ export const ItemDetailContainer = () => {
   useEffect(() => {
         const referenciaFire = collection(db, "productos")
        const itemFire = doc(referenciaFire,id)
-                console.log(itemFire)
             getDoc(itemFire)
             .then((respuesta)=>{
                 setProducto({id: respuesta.id, ...respuesta.data()})
-                console.log("producto", producto)
             })
             .catch((error) => {
                 alert(error)

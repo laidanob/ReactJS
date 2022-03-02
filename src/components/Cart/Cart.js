@@ -1,28 +1,33 @@
-import {useContext, useEffect} from 'react';
-import Boton from "react-bootstrap/Button";
+import {useContext} from 'react';
 import { CartContext } from '../context/CartContext';
-import { CartItem } from './CartItem';
+import { CartList } from './CartList';
 import { Link } from 'react-router-dom';
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 export const Cart = () => {
     const {vaciarCarrito, carrito,totalCompra} = useContext(CartContext)
     
 
-  return <div id="contacto" >
+  return <div className="container" >
       <h1>CARRITO</h1>
       <hr/>
       {carrito.length > 0 ? 
           <>
-        {carrito.map(prod => (<CartItem prod= {prod}/>))}
+        <CartList carrito= {carrito}/>
         <hr></hr>
+
         <p>El total de tu compra es: ${totalCompra()}</p>
-        <Link to="/checkout">Terminar mi compra</Link>
-        <Boton onClick={vaciarCarrito}>Vaciar Carrito</Boton>
+        <Box mt={5}>
+        <Button sx={{mx:2}}  variant="outlined" color="error" onClick={vaciarCarrito}>Vaciar Carrito</Button>
+        <Link to="/checkout"><Button sx={{mx:2}}  variant="contained" color="success">Terminar mi compra</Button></Link>
+        </Box>
         </>
        :
        <>
        <h2>NO HAY PRODUCTOS EN TU CARRITO</h2>
-       <Link to="/productos">ver productos</Link>
+       <hr></hr>
+       <Link to="/productos"><Button variant="contained">ver productos</Button></Link>
        </>
        }  
        

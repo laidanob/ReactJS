@@ -126,10 +126,10 @@ export const NewProductForm = ({ initialValues, handleEnviar }) => {
                 <MenuItem disabled value={""}>
                   Seleccionar Categoria
                 </MenuItem>
-                <MenuItem value={"Contenedor Pendrive"}>
+                <MenuItem value={"ContenedorPendrive"}>
                   Contenedor Pendrive
                 </MenuItem>
-                <MenuItem value={"Contenedor Imagenes"}>
+                <MenuItem value={"ContenedorImagenes"}>
                   Contenedor Imagenes
                 </MenuItem>
                 <MenuItem value={"Pendrive"}>Pendrive</MenuItem>
@@ -150,7 +150,7 @@ export const NewProductForm = ({ initialValues, handleEnviar }) => {
               helperText={formik.errors.img}
               margin="normal"
             />
-            <Button type="submit" variant="contained" endIcon={<SendIcon />}>
+            <Button type="submit"  endIcon={<SendIcon />}>
               Enviar
             </Button>
           </Form>

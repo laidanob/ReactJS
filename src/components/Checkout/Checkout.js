@@ -2,33 +2,53 @@ import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 import { db } from '../firebase/config';
 import {collection, Timestamp,addDoc} from "firebase/firestore"
+import { useAuth } from '../context/AuthContext';
+import { CheckoutExitoso } from './CheckoutExitoso';
 
 
 export const Checkout = () => {
-    const {carrito, totalCompra} = useContext(CartContext)
+    const {carrito, totalCompra,vaciarCarrito} = useContext(CartContext)
+    const {usuario} = useAuth()
     const [idTrans, setIdTrans] = useState()
     const ordenFire = collection(db,"ordenes")
-    const handleEnviar = () => {
-        const orden = {
-            usuario: {nombre: "Bruno",
-            Telefono: 15273732,
-            Email: "bruno.laidano@gmail.com"},
-            items: carrito,
-            total: totalCompra(),
-            fecha: Timestamp.fromDate(new Date())
-        }
+    const [orden, setOrden] = useState({}) 
 
-        console.log(orden)
+    const handleEnviar = () => {
+        
+      setOrden({
+        usuario: {nombre: usuario.displayName,
+          Telefono: usuario.phoneNumber,
+          Email: usuario.email},
+          items: carrito,
+          total: totalCompra(),
+          fecha: Timestamp.fromDate(new Date()),
+        })
         
         addDoc(ordenFire,orden)
-                .then((respuesta) => {setIdTrans(respuesta.id)}) 
+                .then((respuesta) => {
+                  setOrden({id: respuesta.id,...orden})
+                  setIdTrans(respuesta.id)
+                  }) 
+        vaciarCarrito()
     }
     
     
 
-  return <div id="contacto">
-      <h1>Resumen de la compra</h1>
-        <p>ID DE LA COMPRA: {idTrans}</p>
-      <button onClick={handleEnviar}>Enviar</button>
+  return <div className='container'>
+     {idTrans ? <CheckoutExitoso/>
+    :
+    <>
+    <h1>Revisa que tus datos sean correctos</h1>
+        
+        <p>Nombre {usuario.displayName}</p>
+        <p>Telefono{usuario.phoneNumber}</p>
+        <p>Email {usuario.email}</p>
+        <p>Vas a hacer una compra por $ {totalCompra()}</p>
+        
+      <button onClick={handleEnviar}>Confirmar</button>
+    </>   
+    }
+    
+      
   </div>;
 };
