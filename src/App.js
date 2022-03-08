@@ -15,14 +15,18 @@ import {Login} from "./components/Autenticacion/Login";
 import { AuthProvider } from "./components/context/AuthContext";
 import { RutasProtegidas } from "./components/RutasProtegidas/RutasProtegias";
 import {CreateNewProduct} from "./components/Profile/CreateNewProduct";
+import { ThemeProvider} from '@mui/material/styles';
+import {theme} from "./components/materialUI/materialConfig";
+import { FotolibrosPremium } from "./components/Pages/Fotolibros/FotolibrosPremium";
 
 
 function App() {
-
+  
 
   return (
 
     <div className="App">
+      <ThemeProvider theme={theme}>
       <AuthProvider>
       <CartProvider>
       <BrowserRouter> 
@@ -39,6 +43,7 @@ function App() {
       <Route path="/checkout" element={<RutasProtegidas><Checkout/></RutasProtegidas>} />
       <Route path="/profile" element={<RutasProtegidas><Profile/></RutasProtegidas>} />
       <Route path="/iniciar" element={<Login/>} />
+      <Route path="/fotolibropremium" element={<FotolibrosPremium/>} />
       <Route path="/agregarproducto" element={<CreateNewProduct/>} />
       <Route path="*" element={<Navigate to="/"/>}/>
 
@@ -46,6 +51,7 @@ function App() {
       </BrowserRouter> 
       </CartProvider>
       </AuthProvider>
+      </ThemeProvider>
       
     </div>
   );

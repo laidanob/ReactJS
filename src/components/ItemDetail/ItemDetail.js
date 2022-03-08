@@ -2,7 +2,7 @@ import {useState, useEffect, useContext} from 'react';
 import { CartContext } from '../context/CartContext';
 import { ItemCount } from '../ItemCount/ItemCount';
 import { Notificacion } from "../Notificacion/Notificacion";
-
+import {Box} from '@mui/material'
 
 export const ItemDetail = ({nombre,desc,precio,img,id,stock,initial}) => {
   const [cuentaCantidad, setCantidad] = useState(1);
@@ -31,7 +31,7 @@ export const ItemDetail = ({nombre,desc,precio,img,id,stock,initial}) => {
   }
  
   
-  return <div className="container" key={id}>
+  return <Box sx={{mt: "60px" }} key={id}>
       <h1>{nombre}</h1>
       
       <img id="imagenDetail" src={img} alt={desc}></img>
@@ -52,5 +52,5 @@ export const ItemDetail = ({nombre,desc,precio,img,id,stock,initial}) => {
 
       {mostrarNoti && <Notificacion valor={true} titulo="Carrito" mensaje={`Agregaste ${cuentaCantidad} productos`} />}
      
-  </div>;
+  </Box>;
 };

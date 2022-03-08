@@ -28,14 +28,8 @@ export const ItemDetailContainer = () => {
     },[id])
   
     return <div>
-        <h1>ITEM DETAIL CONTAINER</h1>
-        <hr/>
+        
         { loading ? <Loader/> : <> <ItemDetail {...producto} /> </>}
        
-       <form>
-
-            
-
-       </form>
     </div>;
 };
