@@ -16,7 +16,7 @@ export const NavBarMenu = () => {
            
             <SubMenuFotolibros ruta={ruta}/>
                     
-            <MenuItem className={"boton"}   key={"productos"} >
+            <MenuItem key={"productos"} >
                 <Link component={Link}  to="/productos"> <Typography color={(ruta === "/") ? "primary.main" : ""} sx={{ '&:hover': { color: "primary.main"} }}>PRODUCTOS</Typography></Link>
             </MenuItem>
                 </>
