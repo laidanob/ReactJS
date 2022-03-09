@@ -7,7 +7,7 @@ import {Box,IconButton,Typography,Menu,MenuItem} from '@mui/material';
 export const UserWidget = ({anchorElUser,handleOpenUserMenu,handleCloseUserMenu,cerrarSesionMenu}) => {
 
     return (<>
-         <Box sx={{ flexGrow: 0 }}>
+         <Box>
        
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <UserLogo/>

@@ -1,10 +1,10 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "./estilo.scss";
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
 import { NavBar } from "./components/NavBar/NavBar";
 import { BrowserRouter , Routes, Route,Navigate} from "react-router-dom"
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
-import "./estilo.scss";
 import { Contacto } from "./components/Contacto/Contacto";
 import { Cart } from "./components/Cart/Cart";
 import { Checkout } from "./components/Checkout/Checkout";
