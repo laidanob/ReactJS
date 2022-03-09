@@ -48,7 +48,7 @@ const imagenes = require.context("../../../media/img")
         En cuanto a las tapas tenes una gran diversidad de opciones.
         Los tiempos de entrega de esta linea son de 10/15 dias, pero tambien contamos con entrega express.</Typography>
 
-        <Button sx={{justifyContent: "left"}}>QUIERO PEDIRLO</Button>
+        <Button variant="contained" sx={{justifyContent: "left"}}>QUIERO PEDIRLO</Button>
 
 </Box>
 </Box>
