@@ -1,17 +1,5 @@
 import React from 'react'
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import { useAuth } from '../context/AuthContext';
+import {Typography,Menu,Button,MenuItem} from '@mui/material';
 import { Link,useLocation } from 'react-router-dom';
 
 
@@ -30,11 +18,11 @@ export const NavBarMenu = (handleCloseUserMenu) => {
     
   return (<>
             <MenuItem className={"boton"}   key={"nosotros"} >
-                <Link component={Link}  to="/"> <Typography color={(ruta == "/") ? "primary.main" : ""} sx={{ '&:hover': { color: "primary.main"} }}>SOBRE RABBIT</Typography></Link>
+                <Link component={Link}  to="/"> <Typography color={(ruta === "/") ? "primary.main" : ""} sx={{ '&:hover': { color: "primary.main"} }}>SOBRE RABBIT</Typography></Link>
             </MenuItem>
            
             <MenuItem className={"boton"}   key={"fotolibros"} >
-                <Button onClick={handleClick}><Typography color={(ruta == "/fotolibros") ? "primary.main" : ""} sx={{'&:hover': { color: "primary.main"}}}>FOTOLIBROS</Typography></Button>
+                <Button onClick={handleClick}><Typography color={(ruta === "/fotolibros") ? "primary.main" : ""} sx={{'&:hover': { color: "primary.main"}}}>FOTOLIBROS</Typography></Button>
             </MenuItem>
           
 
@@ -44,7 +32,7 @@ export const NavBarMenu = (handleCloseUserMenu) => {
                 open={open}
                 onClose={handleClose}>
                         <MenuItem onClick={handleClose}>
-                             <Link component={Link} to="/fotolibropremium"><Typography color={(ruta == "/fotolibropremium") ? "primary.main" : ""} sx={{'&:hover': { color: "primary.main"}}} >PREMIUM</Typography></Link>
+                             <Link component={Link} to="/fotolibropremium"><Typography color={(ruta === "/fotolibropremium") ? "primary.main" : ""} sx={{'&:hover': { color: "primary.main"}}} >PREMIUM</Typography></Link>
                         </MenuItem>
                     </Menu>
                     </MenuItem>

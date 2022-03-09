@@ -1,5 +1,5 @@
 import { Button, Typography,Box } from '@mui/material'
-import React from 'react'
+import React ,{useEffect} from 'react'
 
 
 export const FotolibrosPremium = () => {
@@ -22,10 +22,10 @@ const imagenes = require.context("../../../media/img")
     
   }}
   > 
-  <Box sx={{gridArea: "imagen1"}}><img  src={imagenes("./IMG_6934.jpg")}></img></Box>
-  <Box sx={{gridArea: "imagen2"}}><img  src={imagenes("./S IMG_4809.jpg")}></img></Box>
-  <Box sx={{gridArea: "imagen3"}}><img  src={imagenes("./IMG_3803.JPG")}></img></Box>
-  <Box sx={{gridArea: "imagen4"}}><img  src={imagenes("./IMG_1897.JPG")}></img></Box>
+  <Box sx={{gridArea: "imagen1"}}><img alt='' src={imagenes("./IMG_6934.jpg")}></img></Box>
+  <Box sx={{gridArea: "imagen2"}}><img alt='' src={imagenes("./S IMG_4809.jpg")}></img></Box>
+  <Box sx={{gridArea: "imagen3"}}><img alt='' src={imagenes("./IMG_3803.JPG")}></img></Box>
+  <Box sx={{gridArea: "imagen4"}}><img alt='' src={imagenes("./IMG_1897.JPG")}></img></Box>
    </Box>
   <Box sx={{
             width: "50%",

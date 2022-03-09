@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { CgProfile } from "react-icons/cg";
 import { useAuth } from '../context/AuthContext';
 
 export const UserLogo = () => {
